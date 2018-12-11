@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Room Prepopulation</string>
+    <string name="action_settings">Settings</string>
+    <string name="locale_tile">Current Locale: %1$s</string>
+    <string name="city_1">Vancouver</string>
+    <string name="city_2">Tornoto</string>
+    <string name="city_3">Ottawa</string>
+</resources>
