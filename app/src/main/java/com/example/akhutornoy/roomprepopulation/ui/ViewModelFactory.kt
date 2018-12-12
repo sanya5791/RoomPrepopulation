@@ -2,9 +2,9 @@ package com.example.akhutornoy.roomprepopulation.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.akhutornoy.roomprepopulation.db.Db
+import com.example.akhutornoy.roomprepopulation.db.RoomDb
 
-class ViewModelFactory(private val dataBase: Db) : ViewModelProvider.Factory {
+class ViewModelFactory(private val dataBase: RoomDb) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

@@ -8,6 +8,9 @@ interface CityDao {
     @Insert
     fun insert(city: City)
 
+    @Insert
+    fun insert(cities: List<City>)
+
     @Update
     fun update(city: City)
 

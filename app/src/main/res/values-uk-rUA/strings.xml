@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Room Prepopulation</string>
-    <string name="city_1">Днепр</string>
-    <string name="city_2">Киев</string>
-    <string name="city_3">Львов</string>
     <string name="locale_tile">Текущая Локаль: %1$s</string>
     <string name="action_settings">Настройки</string>
+
+    <string-array name="largest_cities">
+        <item>Днепр</item>
+        <item>Киев</item>
+        <item>Львов</item>
+        <item>Харьков</item>
+    </string-array>
+
 </resources>

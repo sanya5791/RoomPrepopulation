@@ -8,13 +8,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.akhutornoy.roomprepopulation.R
 
 @Database(entities = [(City::class)], version = 1, exportSchema = false)
-abstract class Db : RoomDatabase() {
+abstract class RoomDb : RoomDatabase() {
     abstract fun cityDao(): CityDao
     companion object {
-        @Volatile private var INSTANCE: Db? = null
+        @Volatile private var INSTANCE: RoomDb? = null
 
-        fun getInstance(context: Context): Db {
-            val thread = Thread.currentThread()
+        fun getInstance(context: Context): RoomDb {
             synchronized(this) {
                 if (INSTANCE == null) {
                     INSTANCE = createInstance(context)
@@ -24,7 +23,7 @@ abstract class Db : RoomDatabase() {
         }
 
         private fun createInstance(context: Context) =
-            Room.databaseBuilder(context.applicationContext, Db::class.java, "DataBase.db")
+            Room.databaseBuilder(context.applicationContext, RoomDb::class.java, "DataBase.db")
                 .allowMainThreadQueries()
                 .addCallback(object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
@@ -35,10 +34,11 @@ abstract class Db : RoomDatabase() {
                 .fallbackToDestructiveMigration()
                 .build()
 
-        private fun prepopulateDb(context: Context, db: Db) {
-            db.cityDao().insert(City(context.getString(R.string.city_1)))
-            db.cityDao().insert(City(context.getString(R.string.city_2)))
-            db.cityDao().insert(City(context.getString(R.string.city_3)))
+        private fun prepopulateDb(context: Context, db: RoomDb) {
+            val cities = context.resources
+                .getStringArray(R.array.largest_cities)
+                .map { City(it) }
+            db.cityDao().insert(cities)
         }
     }
 }
